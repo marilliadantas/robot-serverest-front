@@ -1,35 +1,23 @@
-name: Robot Framework Tests
+name: Testes com Robot Framework e SeleniumLibrary
 
 on: push
 
 jobs:
   test:
-    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
+      
+    - name: Robot Framework
+      uses: joonvena/robotframework-docker-action@v1.0
       with:
-        python-version: '3.x'
-
-    - name: Install dependencies
-      run: |
-        pip install robotframework
-        pip install robotframework-requests
-        pip install robotframework-seleniumlibrary
-        pip install robotframework-faker
-
-    - name: Run Robot Framework tests
-      run: |
-        robot -d results tests
-
-    - name: Archive Robot Framework results
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v3
+        robot_reports_dir: 'reports'
+      
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      if: always()
       with:
-        name: robot-results
-        path: ./results
+        name: robot-reports
+        path: reports
