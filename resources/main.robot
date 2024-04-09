@@ -1,7 +1,5 @@
 *** Settings ***
 Library    SeleniumLibrary
-Library    FakerLibrary    locale=pt_BR
-Library    String
 
 #Data
 Resource   data/geral.robot
