@@ -6,15 +6,14 @@
   <h1>Projeto - Teste de FrontEnd com Robot Framework</h1>
 </div>
 
-Este projeto tem como objetivo realizar testes de FrontEnd em uma aplicação web utilizando o Serve Rest como servidor de testes. O Serve Rest é uma plataforma online para práticas de testes. 
+Este projeto tem como objetivo realizar testes de FrontEnd em uma aplicação web utilizando o SauceDemo como servidor de testes. O SauceDemo é uma plataforma online para práticas de testes.
 
 ## Ferramentas utilizadas:
 - [Robot Framework](https://robotframework.org/robotframework/ "Robot Framework")
 
 ## Bibliotecas utilizadas:
-- [Requests Library](https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html "Requests Library")
-- [String Library](https://robotframework.org/robotframework/latest/libraries/String.html "String Library")
-- [Collections Library](https://robotframework.org/robotframework/latest/libraries/Collections.html "Collections Library")
+
+- [Selenium Library](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html "Selenium Library")
 
 ## Pré-Requisitos
 - Certifique-se de ter o Python instalado em sua máquina. Você pode baixá-lo [aqui](https://www.python.org/downloads/ "Python Download").
@@ -27,7 +26,6 @@ Você pode instalar o Robot Framework e as bibliotecas necessárias executando o
 pip install robotframework
 pip install robotframework-requests
 pip install robotframework-seleniumlibrary
-pip install robotframework-faker
 ```
 
 ## Executando os Testes

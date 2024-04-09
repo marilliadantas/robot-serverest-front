@@ -2,21 +2,40 @@
 Resource    ../main.robot
 
 *** Variables ***
-${emailInput}                 id=email
+
+${usernameInput}              id=user-name
 ${senhaInput}                 id=password
-${entrarButton}               //button[@data-testid='entrar'][contains(.,'Entrar')]
-${tituloPagina}               //p[@class="lead"]
-${homeURL}                    https://front.serverest.dev/admin/home
+${entrarButton}               id=login-button
+${tituloProdutos}             //div[@class="product_label"]
+${msgErro}                    //h3[@data-test="error"]
 
 *** Keywords ***
-Quando digitar email
-    Preencher    ${emailInput}     ${EMAIL}
+Dado que o usuário está na tela de login do Saucedemo
+    Acessar site
+
+Quando digitar username
+    [Arguments]       ${username}
+    Preencher         ${usernameInput}     ${username}
 
 E digitar senha
-    Preencher    ${senhaInput}     ${PASSWORD}
+    [Arguments]      ${senha}
+    Preencher        ${senhaInput}         ${senha}
+
+Quando não digitar username
+    Limpar campo    ${usernameInput}
+
+E não digitar senha
+    Limpar campo    ${senhaInput} 
 
 E clicar em entrar
     Clicar    ${entrarButton}
 
-Então o sistema deve exibir a mensagem "${msgEsperada}"
-    Validar mensagem    ${tituloPagina}   ${msgEsperada}
+Então o sistema exibe a tela de "${produtos}"
+    Validar mensagem    ${tituloProdutos}    ${produtos}
+
+Então o sistema exibe a mensagem de erro "${msgEsperada}"
+    Validar mensagem    ${msgErro}     ${msgEsperada}
+
+Então o sistema exibe as mensagens
+    [Arguments]          ${msgErro}    ${msgErro2}
+    Validar mensagens    ${msgErro}    ${msgErro2}

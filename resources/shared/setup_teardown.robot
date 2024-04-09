@@ -30,6 +30,11 @@ Validar URL
     [Arguments]            ${url}
     Location Should Be     ${url}
 
+Validar mensagens
+    [Arguments]     ${alerta1}    ${alerta2}
+    Element Should Contain    ${msgErro}    ${alerta1} 
+    Element Should Contain    ${msgErro2}     ${alerta2} 
+
 Fechar navegador
     Close Browser
 
