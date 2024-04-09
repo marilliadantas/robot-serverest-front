@@ -41,16 +41,15 @@ robot nome_do_arquivo.robot
 ├── readme.md
 ├── resources
 │   ├── data
-│   │   ├── cadastro.robot
+│   │   ├── login.robot
 │   │   ├── geral.robot
-│   │   └── login.robot
+│   │
 │   ├── main.robot
 │   ├── pages
-│   │   ├── cadastro_page.robot
-│   │   └── login_page.robot
+│   │   ├── login_page.robot
+│   │ 
 │   └── shared
 │       └── setup_teardown.robot
 └── tests
-    ├── cadastro.robot
-    └── login.robot
+    ├── login.robot
 ```
