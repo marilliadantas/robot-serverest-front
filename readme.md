@@ -24,7 +24,6 @@ Você pode instalar o Robot Framework e as bibliotecas necessárias executando o
 
 ```bash
 pip install robotframework
-pip install robotframework-requests
 pip install robotframework-seleniumlibrary
 ```
 
