@@ -1,23 +1,39 @@
-name: Testes com Robot Framework e SeleniumLibrary
+name: Robot Framework Tests
 
-on: [push, pull_request]
+on: push
 
 jobs:
   test:
+    name: Run Tests
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      
-    - name: Robot Framework
-      uses: joonvena/robotframework-docker-action@v1.0
-      with:
-        robot_reports_dir: 'reports'
-      
-    - name: Upload test results
-      uses: actions/upload-artifact@v2
-      if: always()
-      with:
-        name: robot-reports
-        path: reports
+      # Passo 1: Fazer checkout do repositório
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Passo 2: Configurar o ambiente Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'  # Especifica a versão do Python
+
+      # Passo 3: Instalar dependências do Robot Framework
+      - name: Install dependencies
+        run: |
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          # Adicione outras dependências, se necessário
+
+      # Passo 4: Executar testes do Robot Framework
+      - name: Run Robot Framework tests
+        run: |
+          robot -d test-results tests  # Diretório de resultados renomeado para 'test-results'
+
+      # Passo 5: Arquivar resultados dos testes
+      - name: Archive Robot Framework results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: robot-results
+          path: ./test-results  # Arquiva os resultados no diretório 'test-results'
