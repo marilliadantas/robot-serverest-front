@@ -35,7 +35,7 @@ CT04 - Login com email em branco
     E clicar em entrar
     Então o sistema exibe a mensagem de erro "Epic sadface: Username is required"
 
-CT04 - Login com senha em branco
+CT05 - Login com senha em branco
     [Tags]    LoginSenhaVazio
     Dado que o usuário está na tela de login do Saucedemo
     Quando digitar username  ${USERNAME}
