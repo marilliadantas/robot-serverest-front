@@ -35,7 +35,3 @@ Então o sistema exibe a tela de "${produtos}"
 
 Então o sistema exibe a mensagem de erro "${msgEsperada}"
     Validar mensagem    ${msgErro}     ${msgEsperada}
-
-Então o sistema exibe as mensagens
-    [Arguments]          ${msgErro}    ${msgErro2}
-    Validar mensagens    ${msgErro}    ${msgErro2}

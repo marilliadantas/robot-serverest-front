@@ -49,4 +49,4 @@ CT06 - Login com email e senha em branco
     Quando não digitar username
     E não digitar senha
     E clicar em entrar
-    Então o sistema exibe as mensagens  Epic sadface: Username is required     Epic sadface: Password is required
+    Então o sistema exibe a mensagem de erro "Epic sadface: Username is required"
