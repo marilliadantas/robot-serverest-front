@@ -1,29 +1,32 @@
-name: Robot Framework CI
+name: Robot Framework Tests
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+on: push
 
 jobs:
-  build:
-
-    runs-on: windows-latest
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.8.2
-      uses: actions/setup-python@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
       with:
-        python-version: "3.8.2"
+        python-version: '3.x'
+
     - name: Install dependencies
       run: |
         pip install robotframework-seleniumlibrary
-        
-    - name: Run Test
+
+    - name: Run Robot Framework tests
       run: |
         robot -d results tests
+
+    - name: Archive Robot Framework results
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: robot-results
+        path: ./results
